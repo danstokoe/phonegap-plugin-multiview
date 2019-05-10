@@ -1,0 +1,21 @@
+{
+  "name": "com.phonegap.pgmultiviewdemo",
+  "version": "0.0.1",
+  "displayName": "MultiviewDemo",
+  "cordova": {
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "plugins": {
+      "cordova-plugin-whitelist": {},
+      "phonegap-plugin-multiview": {}
+    }
+  },
+  "dependencies": {
+    "cordova-android": "^7.1.4",
+    "cordova-ios": "~4.5.5",
+    "phonegap-plugin-multiview": "..",
+    "cordova-plugin-whitelist": "1"
+  }
+}
