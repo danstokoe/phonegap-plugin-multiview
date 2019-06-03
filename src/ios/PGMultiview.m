@@ -49,14 +49,6 @@
       willShowViewController:(UIViewController *)viewController
                     animated:(BOOL)animated
 {
-    if(viewController == self.viewController)
-    {
-        navigationController.navigationBarHidden = YES;
-    }
-    else
-    {
-        navigationController.navigationBarHidden = NO;
-    }
    
 }
 
