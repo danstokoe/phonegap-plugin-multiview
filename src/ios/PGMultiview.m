@@ -57,6 +57,7 @@
     {
         navigationController.navigationBarHidden = NO;
     }
+   
 }
 
 
@@ -68,10 +69,10 @@
     PGMultiViewController* topView = (PGMultiViewController*)[self.viewController.navigationController popViewControllerAnimated:YES];
     // seend the message back to our creator
     [topView.pgmDelegate dismissWithResult:msg];
-
+    
     self.viewController.navigationController.navigationBarHidden = YES;
     childViewController = NULL;
-
+    
     // When we get this message, we are dismissing the view so there is no need to use a callback into js
 }
 
@@ -81,11 +82,11 @@
     childViewController.pgmDelegate = self;
     childViewController.startPage = [command argumentAtIndex:0];
     childViewController.messageFromParent = [command argumentAtIndex:1];
-
+    
     self.callbackId = command.callbackId;
-
+    
     // TODO: set proper config.xml -> childViewController.configFile
-
+    
     if(self.viewController.navigationController == NULL)
     {
         UINavigationController* nav = [[UINavigationController alloc] init];
@@ -96,7 +97,7 @@
         nav.hidesBarsOnSwipe  = YES;
         nav.hidesBarsOnTap = YES;
     }
-
+    
     [self.viewController.navigationController pushViewController:childViewController animated:YES];
 }
 
@@ -106,12 +107,12 @@
     if([currentViewController isKindOfClass:[PGMultiViewController class]]) {
         CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK
                                                           messageAsString:currentViewController.messageFromParent];
-
+        
         [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }
     else {
         CDVPluginResult* pluginError = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:@"NoValue"];
-         [self.commandDelegate sendPluginResult:pluginError callbackId:command.callbackId];
+        [self.commandDelegate sendPluginResult:pluginError callbackId:command.callbackId];
     }
 }
 
