@@ -23,6 +23,15 @@
 
 @end
 
+@interface MyNav : UINavigationController
+@end
+@implementation MyNav
+- (BOOL) shouldAutorotate
+{
+    return NO;
+}
+@end
+
 
 #pragma mark PGMultiView - CDVPlugin subclass
 
@@ -81,7 +90,7 @@
     
     if(self.viewController.navigationController == NULL)
     {
-        UINavigationController* nav = [[UINavigationController alloc] init];
+        MyNav* nav = [[MyNav alloc] init];
         nav.navigationBarHidden = YES;
         nav.delegate = self;
         self.webView.window.rootViewController = nav;
