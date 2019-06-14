@@ -30,6 +30,11 @@
 {
     return NO;
 }
+-(BOOL) isNavigationBarHidden{
+    [super isNavigationBarHidden];
+    return NO;
+}
+
 @end
 
 
@@ -58,7 +63,8 @@
       willShowViewController:(UIViewController *)viewController
                     animated:(BOOL)animated
 {
-   
+   navigationController.navigationBar.barStyle = UIBarStyleDefault;
+    
 }
 
 
@@ -92,14 +98,18 @@
     {
         MyNav* nav = [[MyNav alloc] init];
         nav.navigationBarHidden = YES;
+        [nav.navigationBar removeFromSuperview];
+        nav.navigationBar.hidden =YES;
+        nav.toolbar.hidden = NO;
         nav.delegate = self;
         self.webView.window.rootViewController = nav;
         [nav pushViewController:self.viewController animated:NO];
         nav.hidesBarsOnSwipe  = YES;
         nav.hidesBarsOnTap = YES;
     }
-    
+    self.viewController.navigationController.navigationBarHidden =YES;
     [self.viewController.navigationController pushViewController:childViewController animated:YES];
+    
 }
 
 - (void)getMessage:(CDVInvokedUrlCommand*)command
